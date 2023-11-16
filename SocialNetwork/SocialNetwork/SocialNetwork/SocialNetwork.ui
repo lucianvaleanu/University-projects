@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SocialNetworkClass</class>
+ <widget class="QMainWindow" name="SocialNetworkClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1084</width>
+    <height>576</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SocialNetwork</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_7">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Your feed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="feedList"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Your posts&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="userPostsList"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLineEdit" name="inputEdit"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="editPostButton">
+              <property name="text">
+               <string>Edit Post</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Subscriptions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="subscribedTopics">
+            <property name="minimumSize">
+             <size>
+              <width>71</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QListWidget" name="unsubscribedTopics">
+            <property name="minimumSize">
+             <size>
+              <width>71</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLineEdit" name="inputSearchUnsub"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="subscribeButton">
+              <property name="text">
+               <string>Subscribe</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Make a new post</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="inputPostText"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="postButton">
+            <property name="text">
+             <string>Post</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1084</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="SocialNetwork.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>inputSearchUnsub</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SocialNetworkClass</receiver>
+   <slot>search()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>879</x>
+     <y>622</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>subscribeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SocialNetworkClass</receiver>
+   <slot>subscribe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1032</x>
+     <y>474</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1118</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>postButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SocialNetworkClass</receiver>
+   <slot>makePost()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1064</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1105</x>
+     <y>532</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editPostButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SocialNetworkClass</receiver>
+   <slot>editPost()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>514</x>
+     <y>481</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>482</x>
+     <y>609</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>userPostsList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>SocialNetworkClass</receiver>
+   <slot>showPost()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>323</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>332</x>
+     <y>-24</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>search()</slot>
+  <slot>subscribe()</slot>
+  <slot>makePost()</slot>
+  <slot>editPost()</slot>
+  <slot>showPost()</slot>
+ </slots>
+</ui>
