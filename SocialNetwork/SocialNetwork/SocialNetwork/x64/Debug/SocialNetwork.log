@@ -1,9 +1,0 @@
-﻿  Controller.cpp
-  SocialNetwork.cpp
-  main.cpp
-C:\Users\lucia\OneDrive\Documents\Uni Projects\University-projects\SocialNetwork\SocialNetwork\SocialNetwork\Controller.cpp(95): warning C4715: 'Controller::getPost': not all control paths return a value
-C:\Users\lucia\OneDrive\Documents\Uni Projects\University-projects\SocialNetwork\SocialNetwork\SocialNetwork\Controller.cpp(88): warning C4715: 'Controller::getTopic': not all control paths return a value
-C:\Users\lucia\OneDrive\Documents\Uni Projects\University-projects\SocialNetwork\SocialNetwork\SocialNetwork\Controller.cpp(102): warning C4715: 'Controller::getPostByText': not all control paths return a value
-  qrc_SocialNetwork.cpp
-  moc_SocialNetwork.cpp
-  SocialNetwork.vcxproj -> C:\Users\lucia\OneDrive\Documents\Uni Projects\University-projects\SocialNetwork\SocialNetwork\x64\Debug\SocialNetwork.exe
