@@ -1,0 +1,29 @@
+<div *ngIf="episode">
+    <h2>Add a new episode</h2>
+    <div class="input-box">
+        <div>
+            <label for="episode-title">Title </label> <br />
+            <input id="episode-title" [(ngModel)]="episode.title" placeholder="">
+        </div>
+        <div>
+            <label for="episode-season">Season </label><br />
+            <input id="episode-season" [(ngModel)]="episode.season" placeholder="">
+        </div>
+        <div>
+            <label for="episode-ep">Episode </label><br />
+            <input id="episode-ep" [(ngModel)]="episode.ep" placeholder="">
+        </div>
+        <div>
+            <label for="episode-rating">Rating </label><br />
+            <input id="episode-rating" [(ngModel)]="episode.rating" placeholder="">
+        </div>
+
+        <button type="button" (click)="onAdd()">
+            Add
+        </button>
+
+        <button type="button" (click)="goBack()">
+            Go back
+        </button>
+    </div>
+</div>
