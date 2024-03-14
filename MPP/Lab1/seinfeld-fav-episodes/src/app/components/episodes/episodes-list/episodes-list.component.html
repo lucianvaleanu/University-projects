@@ -1,7 +1,7 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let e of episodes">
-      <div class="episode-item align-center">
+      <div class="episode-item">
         <a routerLink="/detail/{{transformString(e.title)}}" > <img src={{e.image}}></a>
         <br/>
         <p>{{e.title}}</p>
