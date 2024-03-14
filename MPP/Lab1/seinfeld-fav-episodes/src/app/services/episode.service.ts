@@ -94,7 +94,7 @@ export class EpisodeService {
       if(!season){
         return of(this.episodesList);
       }
-      const filteredEpisode = this.episodesList.filter((e) => e.season == season)
+      const filteredEpisode = this.episodesList.filter((e) => e.season === season)
       return of(filteredEpisode)
   }
 

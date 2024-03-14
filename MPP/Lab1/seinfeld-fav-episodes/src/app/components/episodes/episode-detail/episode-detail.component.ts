@@ -12,6 +12,7 @@ import { EpisodeService } from '../../../services/episode.service';
   styleUrl: './episode-detail.component.css'
 })
 export class EpisodeDetailComponent {
+
   episode?: Episode;
 
   constructor(
@@ -24,6 +25,22 @@ export class EpisodeDetailComponent {
     this.getEpisode();
   }
 
+  onRatingChange(newRating: number) {
+    if (this.episode) {
+      this.episode.rating = Number(newRating);
+    }
+  }
+  onEpisodeChange(newEpisode: number) {
+    if (this.episode) {
+      this.episode.ep = Number(newEpisode);
+    }
+  }
+  onSeasonChange(newSeason: number) {
+    if (this.episode) {
+      this.episode.season = Number(newSeason);
+    }
+  }
+
   getEpisode(): void {
     const title = String(this.route.snapshot.paramMap.get('title'));
     const id = this.episodeService.getID(title);
@@ -31,7 +48,7 @@ export class EpisodeDetailComponent {
 
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

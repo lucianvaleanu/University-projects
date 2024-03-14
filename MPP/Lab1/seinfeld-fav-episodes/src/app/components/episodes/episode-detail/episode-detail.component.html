@@ -7,15 +7,15 @@
     </div>
     <div>
       <label for="episode-season">Season </label><br />
-      <input id="episode-season" [(ngModel)]="episode.season" placeholder="season">
+      <input id="episode-season" [(ngModel)]="episode.season" (ngModelChange)="onSeasonChange($event)" placeholder="season">
     </div>
     <div>
       <label for="episode-ep">Episode </label><br />
-      <input id="episode-ep" [(ngModel)]="episode.ep" placeholder="episode">
+      <input id="episode-ep" [(ngModel)]="episode.ep" (ngModelChange)="onEpisodeChange($event)" placeholder="episode">
     </div>
     <div>
       <label for="episode-rating">Rating </label><br />
-      <input id="episode-rating" [(ngModel)]="episode.rating" placeholder="rating">
+      <input id="episode-rating" [(ngModel)]="episode.rating" (ngModelChange)="onRatingChange($event)" placeholder="rating">
     </div>
 
     <button type="button" (click)="goBack()">
