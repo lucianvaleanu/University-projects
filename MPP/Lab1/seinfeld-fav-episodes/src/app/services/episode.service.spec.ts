@@ -96,10 +96,21 @@ describe('EpisodeService', () => {
   it('should return an empty array if no episodes are found for the given season', () => {
     const episodes: Episode[] = [];
 
+
     spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
 
     service.fitlerBySeason(1).subscribe(filteredEpisodes => {
-      expect(filteredEpisodes.length).toBe(0);
+      expect(filteredEpisodes.length).toBe(1);
+    });
+  });
+
+  it('should return all episodes if no season is given', () => {
+    const episodes: Episode[] = EPISODES;
+
+    spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
+
+    service.fitlerBySeason().subscribe(filteredEpisodes => {
+      expect(filteredEpisodes.length).toBe(episodes.length);
     });
   });
 

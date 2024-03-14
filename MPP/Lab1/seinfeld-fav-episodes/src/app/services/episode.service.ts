@@ -90,8 +90,11 @@ export class EpisodeService {
     return transformedString;
   }
 
-  fitlerBySeason(season: number): Observable<Episode[]> {
-      const filteredEpisode = this.episodesList.filter((e) => e.season === season)
+  fitlerBySeason(season?: number): Observable<Episode[]> {
+      if(!season){
+        return of(this.episodesList);
+      }
+      const filteredEpisode = this.episodesList.filter((e) => e.season == season)
       return of(filteredEpisode)
   }
 
