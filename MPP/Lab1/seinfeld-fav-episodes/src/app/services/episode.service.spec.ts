@@ -77,4 +77,30 @@ describe('EpisodeService', () => {
     const invalidId = -1;
     expect(() => service.getEpisode(invalidId)).toThrowError('Episode not found!');
   });
+
+  it('should filter episodes by season', () => {
+    const episodes: Episode[] = [
+      { id: 4, title: 'The Comeback', season: 8, ep: 13, rating: 4.2, image: "../assets/thecomeback.jpg" },
+      { id: 6, title: 'The Summer of George', season: 8, ep: 22, rating: 5, image: "../assets/thesummerofgeorge.jpg" },
+      { id: 8, title: 'The Bizarro Jerry', season: 8, ep: 3, rating: 5, image: "../assets/thebizarrojerry.jpg" }
+    ];
+
+    spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
+
+    service.fitlerBySeason(8).subscribe(filteredEpisodes => {
+      expect(filteredEpisodes.length).toBe(3);
+      expect(filteredEpisodes.every(episode => episode.season === 8)).toBeTrue();
+    });
+  });
+
+  it('should return an empty array if no episodes are found for the given season', () => {
+    const episodes: Episode[] = [];
+
+    spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
+
+    service.fitlerBySeason(1).subscribe(filteredEpisodes => {
+      expect(filteredEpisodes.length).toBe(0);
+    });
+  });
+
 });

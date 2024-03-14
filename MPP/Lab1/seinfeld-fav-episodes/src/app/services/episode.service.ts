@@ -7,6 +7,8 @@ import { Observable, of } from "rxjs";
   providedIn: 'root'
 })
 export class EpisodeService {
+  episodesList: Episode[] = EPISODES;
+
   getID(title: string | undefined): number {
     for(const episode of this.episodesList){
       if(title === this.transformString(episode.title))
@@ -15,7 +17,7 @@ export class EpisodeService {
     throw new Error('ID not found!');
   }
 
-  episodesList: Episode[] = EPISODES;
+
   
   getFreeID(): number {
     let maxId = 0;
@@ -87,5 +89,11 @@ export class EpisodeService {
   
     return transformedString;
   }
+
+  fitlerBySeason(season: number): Observable<Episode[]> {
+      const filteredEpisode = this.episodesList.filter((e) => e.season === season)
+      return of(filteredEpisode)
+  }
+
 
 }

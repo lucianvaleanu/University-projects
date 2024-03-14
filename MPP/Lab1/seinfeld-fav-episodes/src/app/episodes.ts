@@ -11,3 +11,4 @@ export const EPISODES: Episode[] = [
   { id: 8, title: 'The Bizarro Jerry', season: 8, ep: 3, rating: 5, image: "../assets/thebizarrojerry.jpg" },
   { id: 9, title: 'The Puffy Shirt', season: 5, ep: 2, rating: 5, image: "../assets/thepuffyshirt.jpg" }
 ];
+
