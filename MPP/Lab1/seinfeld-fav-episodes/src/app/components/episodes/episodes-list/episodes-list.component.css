@@ -4,10 +4,19 @@
   margin-right: auto;
   text-align: center;
 }
-.input-season{
-  margin-top: 20px;
-  text-align: center;
+
+.filter-and-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; /* Adjust as needed */
 }
+
+.filter-and-search .input-season,
+.filter-and-search .search-episode {
+  margin: 0 10px; /* Adjust spacing between inputs */
+}
+
 
 label{
   font-family: 'Inter', sans-serif;

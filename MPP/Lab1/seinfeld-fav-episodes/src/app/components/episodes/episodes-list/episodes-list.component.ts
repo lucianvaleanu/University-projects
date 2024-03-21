@@ -7,18 +7,20 @@ import { EpisodeService } from "../../../services/episode.service";
   templateUrl: './episodes-list.component.html',
   styleUrls: ['./episodes-list.component.css']
 })
+
 export class EpisodesComponent {
-
-
 
   episodes: Episode[] = [];
 
-  season?: number
+  season?: number;
+
+  episodeToFind?: string;
 
   constructor(private episodeService: EpisodeService) {
   }
 
   onSeasonChange(newSeason: number): void {
+    this.episodeToFind = undefined;
     this.season = newSeason;
     this.getEpisodes();
   }
@@ -27,14 +29,25 @@ export class EpisodesComponent {
     this.getEpisodes();
   }
 
+  searchEpisode(episodeInput: string): void {
+    this.season = undefined;
+    this.episodeToFind = episodeInput;
+    this.getEpisodeFromSearch();
+  }
+
+  getEpisodeFromSearch(): void {
+    this.episodeService.searchEpisode(this.episodeToFind).subscribe((foundEpisode) => {
+      this.episodes = foundEpisode;
+    });
+  }
+
 
   getEpisodes(): void {
-    this.episodeService.fitlerBySeason(Number(this.season)).subscribe((filteredEpisodes) => {
+    this.episodeService.filterBySeason(Number(this.season)).subscribe((filteredEpisodes) => {
       this.episodes = filteredEpisodes
       //Unsubscribe-ul se face automat cand e distrusa componenta
     });
   }
-
   transformString(input: string): string {
     let transformedString = input.trim();
 

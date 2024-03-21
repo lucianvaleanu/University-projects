@@ -7,6 +7,7 @@ import { Observable, of } from "rxjs";
   providedIn: 'root'
 })
 export class EpisodeService {
+
   episodesList: Episode[] = EPISODES;
 
   getID(title: string | undefined): number {
@@ -90,7 +91,7 @@ export class EpisodeService {
     return transformedString;
   }
 
-  fitlerBySeason(season?: number): Observable<Episode[]> {
+  filterBySeason(season?: number): Observable<Episode[]> {
       if(!season){
         return of(this.episodesList);
       }
@@ -98,5 +99,13 @@ export class EpisodeService {
       return of(filteredEpisode)
   }
 
-
+  searchEpisode(episodeToFind?: string): Observable<Episode[]> {
+      if(!episodeToFind){
+        return of(this.episodesList);
+      }
+      const foundEpisodes = this.episodesList.filter(episode =>
+        episode.title.toLowerCase().includes(episodeToFind.toLowerCase())
+      );
+      return of(foundEpisodes);
+  }
 }

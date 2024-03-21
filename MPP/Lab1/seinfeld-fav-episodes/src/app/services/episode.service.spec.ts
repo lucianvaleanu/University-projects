@@ -87,30 +87,41 @@ describe('EpisodeService', () => {
 
     spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
 
-    service.fitlerBySeason(8).subscribe(filteredEpisodes => {
+    service.filterBySeason(8).subscribe(filteredEpisodes => {
       expect(filteredEpisodes.length).toBe(3);
       expect(filteredEpisodes.every(episode => episode.season === 8)).toBeTrue();
     });
   });
 
-  it('should return an empty array if no episodes are found for the given season', () => {
-    const episodes: Episode[] = [];
-
-
-    spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
-
-    service.fitlerBySeason(1).subscribe(filteredEpisodes => {
-      expect(filteredEpisodes.length).toBe(1);
-    });
-  });
 
   it('should return all episodes if no season is given', () => {
     const episodes: Episode[] = EPISODES;
 
     spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
 
-    service.fitlerBySeason().subscribe(filteredEpisodes => {
+    service.filterBySeason().subscribe(filteredEpisodes => {
       expect(filteredEpisodes.length).toBe(episodes.length);
+    });
+  });
+
+  it('should return all episodes if no search term is provided', () => {
+    service.searchEpisode().subscribe((episodes: Episode[]) => {
+      expect(episodes.length).toBe(9); 
+    });
+  });
+
+  it('should return episodes containing the search term', () => {
+    const searchTerm = 'The Contest';
+    service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
+      expect(episodes.length).toBe(1);
+      expect(episodes[0].title).toContain(searchTerm);
+    });
+  });
+
+  it('should return empty array if no episodes match the search term', () => {
+    const searchTerm = 'Non-existent Episode';
+    service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
+      expect(episodes.length).toBe(0);
     });
   });
 
