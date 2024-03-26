@@ -1,0 +1,11 @@
+<ngx-charts-pie-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="pieChartData"
+  [legend]="true"
+  [legendPosition]="legendPosition"
+  [explodeSlices]="true"
+  [doughnut]="false"
+  [labels]="true"
+  (select)="onSelect($event)">
+</ngx-charts-pie-chart>

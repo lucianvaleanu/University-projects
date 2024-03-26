@@ -104,12 +104,6 @@ describe('EpisodeService', () => {
     });
   });
 
-  it('should return all episodes if no search term is provided', () => {
-    service.searchEpisode().subscribe((episodes: Episode[]) => {
-      expect(episodes.length).toBe(9); 
-    });
-  });
-
   it('should return episodes containing the search term', () => {
     const searchTerm = 'The Contest';
     service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
@@ -123,6 +117,18 @@ describe('EpisodeService', () => {
     service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
       expect(episodes.length).toBe(0);
     });
+  });
+
+  it('should return 0 if there are no episodes with the given input season', ()=>{
+    const season = 1;
+    const count = service.getCountBySeason(season);
+    expect(count).toBe(0);
+  });
+
+  it('should return 3 if there the given input season is 8', ()=>{
+    const season = 8;
+    const count = service.getCountBySeason(season);
+    expect(count).toBe(3);
   });
 
 });

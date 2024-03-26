@@ -11,15 +11,15 @@ export class EpisodeService {
   episodesList: Episode[] = EPISODES;
 
   getID(title: string | undefined): number {
-    for(const episode of this.episodesList){
-      if(title === this.transformString(episode.title))
+    for (const episode of this.episodesList) {
+      if (title === this.transformString(episode.title))
         return Number(episode.id);
     }
     throw new Error('ID not found!');
   }
 
 
-  
+
   getFreeID(): number {
     let maxId = 0;
     for (const episode of this.episodesList) {
@@ -39,19 +39,19 @@ export class EpisodeService {
     episode.season = Number(episode.season);
     episode.ep = Number(episode.ep);
     episode.rating = Number(episode.rating);
-    
-    if(episode.title === ''){
+
+    if (episode.title === '') {
       throw new Error('Title can\'t be empty!');
     }
 
     if (isNaN(episode.id) || isNaN(episode.season) || isNaN(episode.ep) || isNaN(episode.rating)) {
       throw new Error('Invalid episode data!');
     }
-  
+
     if (this.episodesList.find((e) => e.title === episode.title)) {
       throw new Error('Episode with this title already exists!');
     }
-  
+
     this.episodesList.push(episode);
     return of(episode);
   }
@@ -83,29 +83,34 @@ export class EpisodeService {
 
   transformString(input: string): string {
     let transformedString = input.trim();
-  
+
     transformedString = transformedString.replace(/\s+/g, '-');
-  
+
     transformedString = transformedString.toLowerCase();
-  
+
     return transformedString;
   }
 
   filterBySeason(season?: number): Observable<Episode[]> {
-      if(!season){
-        return of(this.episodesList);
-      }
-      const filteredEpisode = this.episodesList.filter((e) => e.season === season)
-      return of(filteredEpisode)
+    if (!season) {
+      return of(this.episodesList);
+    }
+    const filteredEpisode = this.episodesList.filter((e) => e.season === season)
+    return of(filteredEpisode)
   }
 
   searchEpisode(episodeToFind?: string): Observable<Episode[]> {
-      if(!episodeToFind){
-        return of(this.episodesList);
-      }
-      const foundEpisodes = this.episodesList.filter(episode =>
-        episode.title.toLowerCase().includes(episodeToFind.toLowerCase())
-      );
-      return of(foundEpisodes);
+    if (!episodeToFind) {
+      return of(this.episodesList);
+    }
+    const foundEpisodes = this.episodesList.filter(episode =>
+      episode.title.toLowerCase().includes(episodeToFind.toLowerCase())
+    );
+    return of(foundEpisodes);
+  }
+
+  getCountBySeason(season: number): number {
+    const count = this.episodesList.filter((e) => (e.season === season)).length;
+    return count;
   }
 }

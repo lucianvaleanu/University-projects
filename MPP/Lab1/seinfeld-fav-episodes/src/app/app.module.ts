@@ -11,6 +11,12 @@ import { EpisodeDetailComponent } from './components/episodes/episode-detail/epi
 import { EpisodeAddComponent } from './components/episodes/episode-add/episode-add.component';
 import { EpisodeDeleteComponent } from './components/episodes/episode-delete/episode-delete.component';
 import { EpisodesComponent } from './components/episodes/episodes-list/episodes-list.component';
+import { EpisodesPieChartComponent } from './components/episodes/episodes-pie-chart/episodes-pie-chart.component';
+
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -19,7 +25,8 @@ import { EpisodesComponent } from './components/episodes/episodes-list/episodes-
         EpisodesComponent,
         EpisodeDetailComponent,
         EpisodeAddComponent,
-        EpisodeDeleteComponent
+        EpisodeDeleteComponent,
+        EpisodesPieChartComponent
     ],
     providers: [
         provideClientHydration()
@@ -29,7 +36,10 @@ import { EpisodesComponent } from './components/episodes/episodes-list/episodes-
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        NgxChartsModule,
+        BrowserAnimationsModule,
+        NgxPaginationModule
     ]
 })
 export class AppModule { }

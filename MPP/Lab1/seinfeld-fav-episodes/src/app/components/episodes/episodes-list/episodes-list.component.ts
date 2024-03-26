@@ -2,6 +2,7 @@ import { Component, SimpleChanges } from '@angular/core';
 import { Episode } from "../../../models/episode";
 import { EpisodeService } from "../../../services/episode.service";
 
+
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes-list.component.html',
@@ -11,6 +12,9 @@ import { EpisodeService } from "../../../services/episode.service";
 export class EpisodesComponent {
 
   episodes: Episode[] = [];
+  pageSize = 12;
+  p = 1;
+
 
   season?: number;
 
@@ -56,5 +60,10 @@ export class EpisodesComponent {
     transformedString = transformedString.toLowerCase();
 
     return transformedString;
+  }
+
+  onPageChange(pageNumber: number): void {
+    this.p = pageNumber;
+
   }
 }
