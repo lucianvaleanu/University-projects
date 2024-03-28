@@ -88,7 +88,7 @@ describe('EpisodeService', () => {
     spyOn(service, 'getEpisodes').and.returnValue(of(episodes));
 
     service.filterBySeason(8).subscribe(filteredEpisodes => {
-      expect(filteredEpisodes.length).toBe(3);
+      expect(filteredEpisodes.length).toBe(4);
       expect(filteredEpisodes.every(episode => episode.season === 8)).toBeTrue();
     });
   });
@@ -105,7 +105,7 @@ describe('EpisodeService', () => {
   });
 
   it('should return episodes containing the search term', () => {
-    const searchTerm = 'The Contest';
+    const searchTerm = 'The Soup Nazi';
     service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
       expect(episodes.length).toBe(1);
       expect(episodes[0].title).toContain(searchTerm);
@@ -113,22 +113,22 @@ describe('EpisodeService', () => {
   });
 
   it('should return empty array if no episodes match the search term', () => {
-    const searchTerm = 'Non-existent Episode';
+    const searchTerm = 'Non-existent-Episode';
     service.searchEpisode(searchTerm).subscribe((episodes: Episode[]) => {
       expect(episodes.length).toBe(0);
     });
   });
 
   it('should return 0 if there are no episodes with the given input season', ()=>{
-    const season = 1;
+    const season = 0;
     const count = service.getCountBySeason(season);
     expect(count).toBe(0);
   });
 
-  it('should return 3 if there the given input season is 8', ()=>{
-    const season = 8;
+  it('should return 1 if there the given input season is 7', ()=>{
+    const season = 7;
     const count = service.getCountBySeason(season);
-    expect(count).toBe(3);
+    expect(count).toBe(1);
   });
 
 });

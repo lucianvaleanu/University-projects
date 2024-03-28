@@ -1,7 +1,7 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { Episode } from "../../../models/episode";
 import { EpisodeService } from "../../../services/episode.service";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-episodes',
@@ -14,11 +14,9 @@ export class EpisodesComponent {
   episodes: Episode[] = [];
   pageSize = 12;
   p = 1;
-
-
   season?: number;
-
   episodeToFind?: string;
+
 
   constructor(private episodeService: EpisodeService) {
   }
@@ -64,6 +62,9 @@ export class EpisodesComponent {
 
   onPageChange(pageNumber: number): void {
     this.p = pageNumber;
+  }
 
+  setPageSize(newSize: number): void{
+    this.pageSize = newSize;
   }
 }

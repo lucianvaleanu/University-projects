@@ -7,12 +7,16 @@
     <label for="episode-season">Filter by season: </label>
     <input id="episode-season" [(ngModel)]="season" (ngModelChange)="onSeasonChange($event)" placeholder="">
   </div>
+  <div class="input-page-size">
+    <label for="page-size">Set items on page: </label>
+    <input id="page-size" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)" placeholder="">
+  </div>
 </div>
 
 <div class="container text-center">
   <div class="row">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
-      *ngFor="let e of episodes | paginate: { itemsPerPage: 12, currentPage: p }">
+      *ngFor="let e of episodes | paginate: { itemsPerPage: pageSize, currentPage: p }">
       <div class="episode-item">
         <a routerLink="/detail/{{transformString(e.title)}}"> <img src={{e.image}}></a>
         <br />

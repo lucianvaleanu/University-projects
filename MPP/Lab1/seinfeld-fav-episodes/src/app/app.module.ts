@@ -16,7 +16,7 @@ import { EpisodesPieChartComponent } from './components/episodes/episodes-pie-ch
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule , PaginatePipe, PaginationService} from 'ngx-pagination';
 
 @NgModule({
     declarations: [
